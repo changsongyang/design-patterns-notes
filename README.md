@@ -228,10 +228,44 @@ mv = ha.handle(processedRequest, response, mappedHandler.getHandler()); }
 - 消息类型:即时消息，延时消息 消息分类:手机短信，邮件消息，QQ消息...
 
 ### 装饰模式
+- 装饰器模式（Decorator Pattern）允许向一个现有的对象添加新的功能，同时又不改变其结构。这种类型的设计模式属于结构型模式，它是作为现有的类的一个包装
+- 这种模式创建了一个装饰类，用来包装原有的类，并在保持类方法签名完整性的前提下，提供了额外的功能。
+- 装饰（Decorator）模式的主要优点有：采用装饰模式扩展对象的功能比采用继承方式更加灵活。可以设计出多个不同的具体装饰类，创造出多个不同行为的组合。
+- 主要缺点是：装饰模式增加了许多子类，如果过度使用会使程序变得很复杂
+
+#### 应用实例： 
+- 1、孙悟空有 72 变，当他变成"庙宇"后，他的根本还是一只猴子，但是他又有了庙宇的功能。 
+- 2、不论一幅画有没有画框都可以挂在墙上，但是通常都是有画框的，并且实际上是画框被挂在墙上。在挂在墙上之前，画可以被蒙上玻璃，装到框子里；这时画、玻璃和画框形成了一个物体。
+
+#### 装饰模式主要包含以下角色。
+- 抽象构件（Component）角色：定义一个抽象接口以规范准备接收附加责任的对象。
+- 具体构件（Concrete    Component）角色：实现抽象构件，通过装饰角色为其添加一些职责。
+- 抽象装饰（Decorator）角色：继承抽象构件，并包含具体构件的实例，可以通过其子类扩展具体构件的功能。
+- 具体装饰（ConcreteDecorator）角色：实现抽象装饰的相关方法，并给具体构件对象添加附加的责任。
+
+#### 装饰者模式在 JDK 应用的源码分析
+- Java 的 IO 结构，FilterInputStream 就是一个装饰者
+
+```
+//1. InputStream 是抽象类, 类似我们前面讲的 Drink
+//2. FileInputStream 是 InputStream 子类，类似我们前面的 DeCaf, LongBlack
+//3. FilterInputStream 是 InputStream 子类:类似我们前面 的 Decorator 修饰者
+//4. DataInputStream 是 FilterInputStream 子类，具体的修饰者，类似前面的 Milk, Soy 等 
+//5. FilterInputStream 类 有 protected volatile InputStream in; 即含被装饰者
+//6. 分析得出在 jdk 的 io 体系中，就是使用装饰者模式
+DataInputStream dis = new DataInputStream(new FileInputStream("d:\\abc.txt")); System.out.println(dis.read());
+dis.close();
+```
+
 ### 组合模式
 ### 外观模式
 ### 享元模式
+
 ### 代理模式
+- 代理模式:为一个对象提供一个替身，以控制对这个对象的访问。即通过代理对象访问目标对象.这样做的好处 是:可以在目标对象实现的基础上,增强额外的功能操作,即扩展目标对象的功能。
+- 被代理的对象可以是远程对象、创建开销大的对象或需要安全控制的对象
+- 代理模式有不同的形式, 主要有三种 静态代理、动态代理 (JDK 代理、接口代理)和 Cglib 代理 (可以在内存动态的创建对象，而不需要实现接口， 他是属于动态代理的范畴)。
+
 
 ## 行为型模式
 - 模版方法模式
