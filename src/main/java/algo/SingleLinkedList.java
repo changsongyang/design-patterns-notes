@@ -1,5 +1,7 @@
 package algo;
 
+import java.util.Stack;
+
 /**
  * 单链表操作
  */
@@ -7,6 +9,9 @@ public class SingleLinkedList {
     // 初始一个头节点
     private  Node head=new Node(0,"");
 
+    public Node getHead() {
+        return head;
+    }
 
     /**
      * 添加到节点末尾
@@ -93,6 +98,80 @@ public class SingleLinkedList {
 
     }
 
+    /**
+     * 单链表反转：
+     *  1 定义一个反转节点 reverseNode=null 作为辅助头节点
+     *  2 从头开始遍历原链表，每遍历一个节点就插入reverseNode的最前端，reverseNode.next=node
+     *  3 最后原链表head.next=reverseNode.next
+     */
+    public   void reverse(){
+            //没有节点或只有一个节点无需反转 直接返回
+            if(head.next==null || head.next.next==null){
+                return;
+            }
+            // 定义一个赋值节点
+            Node cur=head.next;
+            // 定义一个反转后的节点
+            Node reverseNode=new Node(0,"");
+            while (cur!=null){
+                // 保存当前节点的next
+                Node next=cur.next;
+                // 将cur的下一个节点指向新链表的最前端
+                cur.next=reverseNode.next;
+                // 将cur连接到新链表上
+                reverseNode.next=cur;
+                // cur后移
+                cur=next;
+            }
+            // 原链表指向新链表 完成反转
+            head.next=reverseNode.next;
+    }
+
+    /**
+     * 单链表逆序打印输出： 利用栈的特性或先反转在打印
+     */
+    public void  reversePrint(){
+        Node cur=head.next;
+        Stack<Node> stack=new Stack<Node>();
+        while (cur!=null){
+            stack.push(cur);
+            cur=cur.next;
+        }
+        while (!stack.isEmpty()){
+            System.out.println(stack.pop().toString());
+        }
+    }
+
+    /**
+     * 合并两个有序的单链表 合并后依然有序
+     * @param node
+     * @param newNode
+     * @return
+     */
+    public Node merge(Node node,Node newNode){
+        // 定义一个空节点
+        Node head=new Node(0,"");
+        Node l1=node.next;
+        Node l2=newNode.next;
+        Node cur=head;
+        while(l1!=null && l2 !=null){
+            if(l1.no<=l2.no){
+                cur.next=l1;
+                l1=l1.next;
+            }else{
+                cur.next=l2;
+                l2=l2.next;
+            }
+            cur=cur.next;
+        }
+        //任一为空，直接连接另一条链表
+        if (l1 == null) {
+            cur.next = l2;
+        } else {
+            cur.next = l1;
+        }
+        return head.next;
+    }
 
     public  void  list(){
         Node temp=head.next;
@@ -102,6 +181,7 @@ public class SingleLinkedList {
 
        }
     }
+
 }
 
 
