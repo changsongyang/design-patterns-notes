@@ -37,7 +37,8 @@ public class SingleLinkedList {
      */
     public  void  addIndex(Node newNode){
         Node temp=head;
-        boolean flag = false; // flag 标志添加的编号是否存在，默认为 false
+        // flag 标志添加的编号是否存在，默认为 false
+        boolean flag = false;
         while (temp.next!=null){
                 if(temp.next.no > newNode.no){
                     // 大于 说明找到删除节点的前一个节点 temp此时就是
