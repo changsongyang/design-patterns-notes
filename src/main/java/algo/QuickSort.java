@@ -22,7 +22,7 @@ import java.util.Arrays;
 public class QuickSort {
     public static void main(String[] args) {
         int [] arr={0,5,2,6,3};
-        quickSort(arr,0,arr.length-1);
+        sort2(arr,0,arr.length-1);
         System.out.println("Sorting: " + Arrays.toString(arr));
     }
 
@@ -56,30 +56,64 @@ public class QuickSort {
     }
 
 
+    /**
+     * 快速排序是对冒泡排序的一种改进，基本思想是通过一趟排序将要排序的的数据分割成独立的两部分
+     *  其中一部分数据比另一部分数据所有的元素小，然后按此方法对着两部分数据进行快速排序，这个排序过程可以递归进行，以此达到整个数据变成有序序列
+     * @param arr
+     * @param left
+     * @param right
+     */
+    public  static  void   sort2(int []arr,int left,int right){
+         int l=left;
+         int r=right;
+         int point=arr[(left+right)/2];  // 中轴值
+        int temp=0; // 临时变量 作为交换使用
 
-    public  static void sort(int a[], int left, int right) {
-        /*如果左边索引大于或者等于右边的索引就代表已经整理完成一个组了*/
-            if(left >= right) {
-                return ;
-            }
-            int i = left;
-            int j = right;
-            int key = a[left];
-            while(i < j) {
-                /*控制在当组内寻找一遍*/
-                 while(i < j && key <= a[j]) {
-                    j--;/*向前寻找*/
+        // 循环的目的是让比中轴值大的元素放在右边
+         while (l<r){
+             // point的左边一直查找，找到比point大就退出
+             while (arr[l] < point){
+                    l+=1;
                 }
-                a[i] = a[j];
-                while(i < j && key >= a[i]) {
-                    i++;
-                }
-                a[j] = a[i];
-            }
-            a[i] = key;/*当在当组内找完一遍以后就把中间数key回归*/
-            sort(a, left, i - 1);/*最后用同样的方式对分出来的左边的小组进行同上的做法*/
-            sort(a, i + 1, right);/*用同样的方式对分出来的右边的小组进行同上的做法*/
+             // point的右边一直查找，找到比point小于等于的值就退出
+             while (arr[r] > point){
+                 r-=1;
+             }
+             // 如果l>=r 说明point的左右两边的值 已经是按照左边的全是
+             // 小于等于point ,右边全部是大于等于point
+             if(l>=r){
+                 break;
+             }
 
-        }
+             // 交换
+             temp=arr[l];
+             arr[l]=arr[r];
+             arr[r]=temp;
+
+             // 交换完后 发现arr[l]==point相等 则r-- 左移
+             if(arr[l]==point){
+                 r--;
+             }
+             // 交换完后 发现arr[r]==point相等 则l++ 右移
+             if(arr[r]==point){
+                 l++;
+             }
+            // 如果l==r 则必须l++, r-- 否则栈溢出
+             if(l==r){
+                l++;
+                r--;
+             }
+             // 左递归
+             if(left<r){
+                 sort2(arr,left,r);
+             }
+             // 右递归
+             if(right>l){
+                 sort2(arr,l,right);
+             }
+         }
+    }
+
+
 
 }
