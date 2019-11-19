@@ -1,6 +1,8 @@
 package algo;
 
 
+import com.sun.org.apache.regexp.internal.RE;
+
 /**
  * 功能描述: 二叉树的 前序遍历 中序遍历 后续遍历
  *  区别：根节点的遍历顺序
@@ -32,13 +34,13 @@ public class BinaryTree {
 
 
         System.out.println("前序遍历............ABDECFG.....");
-        preOrder(root);    // ABDECFG
-
-        System.out.println("中序遍历...........DBEAFCG......");
-        inorderOrder(root);
-
-        System.out.println("后序遍历..........DEBFGCA.......");
-        postOrder(root);
+//        preOrder(root);    // ABDECFG
+        System.out.println(preOrder(root,3).toString());
+//        System.out.println("中序遍历...........DBEAFCG......");
+//        inorderOrder(root);
+//
+//        System.out.println("后序遍历..........DEBFGCA.......");
+//        postOrder(root);
 
     }
 
@@ -53,6 +55,38 @@ public class BinaryTree {
         preOrder(root.getLeft());
         preOrder(root.getRight());
     }
+
+
+    /**
+     * 前序遍历查找指定的node
+     * @param root
+     * @param id
+     * @return
+     */
+    public static   TreeNode preOrder(TreeNode root, int id){
+        // 乳沟当前节点相同 则返回
+
+        if(root==null){
+            return  null;
+        }
+        if(root.getId()==id){
+            return  root;
+        }
+        TreeNode temo=null;
+        // 如果当前左子树不为空 则递归查找  找到则返回
+        if(root.getLeft()!=null){
+            temo=preOrder(root.getLeft(),id);
+        }
+        // 在左子树找到了  则返回
+        if(temo!=null){
+            return  temo;
+        }
+        if(root.getRight()!=null){
+            temo=preOrder(root.getRight(),id);
+        }
+        return  temo;
+    }
+
 
     /**
      * 中: 左节点>根节点》右节点
@@ -77,6 +111,7 @@ public class BinaryTree {
         postOrder(root.getRight());
         System.out.println(root.toString());
     }
+
 
 }
 
