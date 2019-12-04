@@ -20,7 +20,7 @@ public class BinarySearch {
 
            int []arr={1,2,3,3,3,4,5,8};
           List<Integer> list=binarySearch6(arr,0,arr.length-1,3);
-          System.out.println(list.toString());
+
     }
 
 

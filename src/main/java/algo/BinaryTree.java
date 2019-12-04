@@ -54,6 +54,7 @@ public class BinaryTree {
         System.out.println(root.toString());
         preOrder(root.getLeft());
         preOrder(root.getRight());
+
     }
 
 

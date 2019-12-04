@@ -1,9 +1,6 @@
 package juc.ThreadPoll;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -58,18 +55,46 @@ public class ThreadPoolExecutorTest {
          *                      DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务；
          *                      DiscardPolicy：直接丢弃任务；
          */
-        ThreadPoolExecutor executor=new
-                ThreadPoolExecutor(1,1,
-                10,TimeUnit.SECONDS,new ArrayBlockingQueue<>(1),new NamedThreadFactory("test-poll"),new ThreadPoolExecutor.CallerRunsPolicy());
-        for (int i = 0; i <5 ; i++) {
-            executor.execute(new Runnable() {
+//        ThreadPoolExecutor executor=new
+//                ThreadPoolExecutor(1,1,
+//                10,TimeUnit.SECONDS,new ArrayBlockingQueue<>(1),new NamedThreadFactory("test-poll"),new ThreadPoolExecutor.CallerRunsPolicy());
+//        for (int i = 0; i <5 ; i++) {
+//            executor.execute(new Runnable() {
+//                @Override
+//                public void run() {
+//                    System.out.println(Thread.currentThread().getName());
+//                }
+//            });
+//        }
+//        executor.shutdown();
+
+
+        /**
+         * 自定义丢弃方法
+         */
+        ExecutorService executorService = new ThreadPoolExecutor(5, 5, 0L,
+                TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(10),
+                Executors.defaultThreadFactory(), new RejectedExecutionHandler() {
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                //打印丢弃的任务
+                System.out.println(r.toString() + " 丢弃的任务 is discard");
+            }
+        });
+        for (int i = 0; i <100 ; i++) {
+            executorService.execute(new Runnable() {
                 @Override
                 public void run() {
                     System.out.println(Thread.currentThread().getName());
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
+        executorService.shutdown();
 
-        executor.shutdown();
     }
 }
