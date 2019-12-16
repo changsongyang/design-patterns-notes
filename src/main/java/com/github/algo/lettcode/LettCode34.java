@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class LettCode34 {
 
     public static void main(String[] args) {
-        int[]  nums ={5,7,7,8,8,10};
-        int target = 8;
+        int[]  nums ={1,3,4,5,6,8,8,8,11,18};
+        int target = 7;
 
 
 //        int[] result=searchRange(nums,target);
-        System.out.println(Arrays.toString(binarySearch3(nums,target)));
+        System.out.println(binarySearch2(nums,target));
     }
 
     public static int[] searchRange(int[] arrays, int k) {
@@ -55,12 +55,7 @@ public class LettCode34 {
     }
 
 
-    /**
-     * 查找数组中第一个匹配的值
-     * @param arrays
-     * @param k
-     * @return
-     */
+
     public static int[]  binarySearch3(int[] arrays, int k){
          int l=0;
          int r=arrays.length;
@@ -90,5 +85,24 @@ public class LettCode34 {
         return  result;
     }
 
-
+    /**
+     * 查找第一个等于给定的值
+     * @param arrays
+     * @param k
+     * @return
+     */
+    private static   int  binarySearch2(int [] arrays,int k){
+            int l=0;
+            int r=arrays.length;
+            while (l<r){
+                int mid=l+(r-l)/2;
+                if(arrays[mid]<=k){
+                    l=mid+1;
+                }else{
+                    r=mid;
+                }
+                System.out.println("l:"+l+"  r"+r);
+            }
+            return  l;
+    }
 }

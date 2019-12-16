@@ -21,6 +21,7 @@ public class StrategyProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
         Map<MsgTypeEnum, Class> handlerMap = Maps.newHashMapWithExpectedSize(3);
+        // 扫描制定的类
         ClassScanner.scan(STRATEGY_PACKAGE, MsgTypeAnnotation.class).forEach(clazz -> {
             System.out.println(clazz.getName());
             // 获取注解中的类型值

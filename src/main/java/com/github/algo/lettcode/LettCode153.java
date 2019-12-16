@@ -4,6 +4,9 @@ public class LettCode153 {
 
 
     public static void main(String[] args) {
+        for(int i=0;i<2;i++){
+
+        }
         int [] nums={3,4,5,1,2};
        System.out.println(findMin(nums,1));
     }

@@ -1,5 +1,5 @@
 package com.github.design.strategy.spring;
-import org.springframework.util.CollectionUtils;
+
 import java.util.Map;
 
 /**
@@ -22,21 +22,13 @@ public class StrategyContext {
 
     public MsgStrategy getStrategy(MsgTypeEnum orderTypeEnum)  {
         try {
-            if (orderTypeEnum == null) {
-                throw new IllegalArgumentException("not fond enum");
-            }
-
-            if (CollectionUtils.isEmpty(strategyMap)) {
-                throw new IllegalArgumentException("strategy map is empty,please check you strategy package path");
-            }
 
             Class clazz = strategyMap.get(orderTypeEnum);
             if (clazz == null) {
                 throw new IllegalArgumentException("not fond strategy for type:" + orderTypeEnum.getCode());
             }
+            return (MsgStrategy)  SpringBeanUtils.getBean(clazz);
 
-            return (MsgStrategy)Class.forName(clazz.getName()).newInstance();
-//                    return (MsgStrategy) SpringBeanUtils.getBean(clazz);
         }catch (Exception e){
             e.printStackTrace();
         }

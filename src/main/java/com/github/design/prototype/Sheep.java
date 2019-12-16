@@ -7,7 +7,6 @@ package com.github.design.prototype;
  * @time  20/8/2019 下午 1:59
  */
 public class Sheep  implements  Cloneable{
-
     private String name;
     private int age;
     private String color;

@@ -11,6 +11,7 @@ package com.github.design.proxy;
 
 public class TeacherDao  implements  ITeacherDao{
 
+    @Override
     public void teacher() {
         System.out.println(" 调用teacher。。。。。");
     }

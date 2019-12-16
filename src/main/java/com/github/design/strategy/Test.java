@@ -10,9 +10,7 @@ package com.github.design.strategy;
 public class Test {
 
     public static void main(String[] args) {
-        String msgKey="order";
         StrategyContext context=new StrategyContext(MsgStrategyFactory.getStrategy(1));
         context.execute("aaaa");
-
     }
 }

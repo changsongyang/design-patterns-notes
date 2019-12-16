@@ -1,4 +1,4 @@
-package com.github.design.strategy.spring;
+package com.github;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
  * @date: 2019/12/9 14:52
  * @since 1.0.0
  */
-@Component
-public class SpringBeanUtils   implements ApplicationContextAware {
+
+public class SpringBeanUtils implements ApplicationContextAware {
     protected final static Log logger = LogFactory.getLog(SpringBeanUtils.class);
 
     private static ApplicationContext applicationContext;
