@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @MsgTypeAnnotation(msgType = MsgTypeEnum.CONFIRM)
-public class ConfirmMsgStrategy implements MsgStrategy {
+public class ConfirmMsgStrategy extends MsgStrategy {
 
     @Override
     public boolean sendMsg(String jsonStr) {

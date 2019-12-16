@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @MsgTypeAnnotation(msgType = MsgTypeEnum.PAYORDER)
-public class OrderMsgStrategy implements MsgStrategy {
+public class OrderMsgStrategy extends MsgStrategy {
 
     @Override
     public boolean sendMsg(String jsonStr) {

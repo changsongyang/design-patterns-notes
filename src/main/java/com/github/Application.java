@@ -11,19 +11,19 @@ import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class Application {
-    @Autowired
-    private StrategyContext context;
+//    @Autowired
+//    private StrategyContext context;
 
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-    @PostConstruct
-    public  void  init() throws Exception {
-        System.out.println("init......................");
-        context.getStrategy(MsgTypeEnum.getByCode(1)).sendMsg("dddddd");
-
-
-    }
+//    @PostConstruct
+//    public  void  init() throws Exception {
+//        System.out.println("init......................");
+//        context.getStrategy(MsgTypeEnum.getByCode(1)).sendMsg("dddddd");
+//
+//
+//    }
 }
