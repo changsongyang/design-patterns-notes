@@ -10,7 +10,6 @@ package com.github.design.template;
 
 
 public class RedBeanSoyaMilk extends  AbstSoyaMilk {
-
     @Override
     void addCondiments() {
         System.out.println(" 加入上好的红豆 ");

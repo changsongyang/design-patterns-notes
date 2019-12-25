@@ -10,12 +10,10 @@ package com.github.design.template;
 
 
 public class PureSoyaMilk extends  AbstSoyaMilk {
-
     @Override
     void addCondiments() {
         //空实现
     }
-
     @Override
     boolean customerWantCondiments() {
         return false;
