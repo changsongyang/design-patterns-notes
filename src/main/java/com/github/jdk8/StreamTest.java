@@ -67,7 +67,7 @@ public class StreamTest {
         Stream<String> stream7 = Stream.of("hello","world","hello world");
         String str = stream7.collect(Collectors.joining()).toString();
 
-        System.out.println("通过流把集合中的字符串转大写输出");
+        System.out.println("通过流把集合中的字符串转大写输出......");
         List<String> list7 = Arrays.asList("hello","world","hello world");
         list7.stream().map(String::toUpperCase).collect(Collectors.toList()).forEach(System.out::println);
 
@@ -79,10 +79,7 @@ public class StreamTest {
         Stream<List<Integer>> stream8= Stream.of(Arrays.asList(1),Arrays.asList(2,3),Arrays.asList(4,5,6));
         stream8.flatMap(thrList->thrList.stream()).map(item->item*item).forEach(System.out::println);
 
-        System.out.println("随机生成一个流...........");
-        Stream<String> stream9 = Stream.generate(UUID.randomUUID()::toString);
-        // 返回第一个元素
-        stream9.findFirst().ifPresent(System.out::println);
+
 
     }
 }
