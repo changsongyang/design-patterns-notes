@@ -1,7 +1,6 @@
 package com.github.algo;
-
-
 import java.util.Arrays;
+
 
 /**
  * 功能描述: 选择排序
@@ -13,23 +12,21 @@ public class SelectSort {
 
     public static void main(String[] args) {
         int [] arr={4,1,7,3};
-        selectSort(arr);
-
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length-1; i++) {
             int minIndex=i;  // 默认最小元素下标
             for (int j = i+1; j <arr.length ; j++) {
                 if(arr[j]<arr[minIndex]){
                     //如果当前元素 小于最小下标的元素，则替换当前元素下标 为最小元素下标
                     minIndex=j;
                 }
-                // 一轮循环结束 交互位置
-                if(minIndex !=i){
-                    int temp=arr[i];
-                    arr[i]=arr[minIndex];
-                    arr[minIndex]=temp;
-                }
-            }
 
+            }
+            // 一轮循环结束 交互位置
+            if(minIndex !=i){
+                int temp=arr[i];
+                arr[i]=arr[minIndex];
+                arr[minIndex]=temp;
+            }
         }
         System.out.println(Arrays.toString(arr));
 

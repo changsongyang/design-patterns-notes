@@ -80,9 +80,9 @@ public class StreamTest {
         stream8.flatMap(thrList->thrList.stream()).map(item->item*item).forEach(System.out::println);
 
         System.out.println("随机生成一个流...........");
-         Stream<String> stream9 = Stream.generate(UUID.randomUUID()::toString);
-         // 返回第一个元素
-         stream9.findFirst().ifPresent(System.out::println);
+        Stream<String> stream9 = Stream.generate(UUID.randomUUID()::toString);
+        // 返回第一个元素
+        stream9.findFirst().ifPresent(System.out::println);
 
     }
 }
