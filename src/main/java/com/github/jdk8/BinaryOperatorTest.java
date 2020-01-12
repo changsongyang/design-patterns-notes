@@ -21,6 +21,19 @@ public class BinaryOperatorTest {
 
         // 返回 安首字母排序 最小的那个
         System.out.println(binaryOperatorTest.getShort("hello123","world",(a,b)->a.charAt(0)-b.charAt(0)));
+
+        BinaryOperator<Integer> binaryOperator=(a,b)-> a+b+3;
+        System.out.println(binaryOperator.apply(1,2));
+
+        System.out.println("...........");
+
+
+
+        BinaryOperator<Integer> accumulator = (acc, element) -> acc + element;
+        int count = accumulator.apply(accumulator.apply(accumulator.apply(0, 1), 2), 3);
+
+        System.out.println(count);
+
     }
 
     /**

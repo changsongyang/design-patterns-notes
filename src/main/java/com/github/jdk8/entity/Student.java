@@ -29,4 +29,12 @@ public class Student {
     public int compareByName(Student student){
         return this.getName().compareToIgnoreCase(student.getName());
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
