@@ -45,9 +45,5 @@ public class LettCode2 {
         }
         return  dump.next;
     }
-     public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
+
 }
