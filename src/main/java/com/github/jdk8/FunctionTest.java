@@ -1,5 +1,6 @@
 package com.github.jdk8;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 
 /**
@@ -30,6 +31,7 @@ public class FunctionTest {
 
         // 返回25  把 biFunction执行后得到的结果， 作为function的入参去执行
         System.out.println(test.compute4(2,3,(a, b) -> a+b, result -> result  * result ));
+
 
     }
 
