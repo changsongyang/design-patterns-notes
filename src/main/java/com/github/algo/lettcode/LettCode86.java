@@ -30,7 +30,24 @@ public class LettCode86 {
      * @return
      */
     public ListNode partition(ListNode head, int x) {
-
-        return  null;
+        ListNode low=new ListNode(-1);
+        ListNode lowCur=low;
+        ListNode high=new ListNode(-1);
+        ListNode highCur=high;
+        while (head!=null){
+            if(head.val < x){
+                lowCur.next=head;
+                lowCur=lowCur.next;
+            }else{
+                highCur.next=head;
+                highCur=highCur.next;
+            }
+            head=head.next;
+        }
+        // 小链表的尾节点指向大链表头节点的下个节点
+        lowCur.next=high.next;
+        // 大链表的尾节点置换为空
+        highCur.next=null;
+        return  low.next;
     }
 }
