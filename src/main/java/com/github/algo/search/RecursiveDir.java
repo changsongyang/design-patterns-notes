@@ -1,4 +1,4 @@
-package com.github.algo;
+package com.github.algo.search;
 
 
 import java.io.File;

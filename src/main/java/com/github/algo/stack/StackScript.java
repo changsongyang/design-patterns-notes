@@ -1,4 +1,4 @@
-package com.github.algo;
+package com.github.algo.stack;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;

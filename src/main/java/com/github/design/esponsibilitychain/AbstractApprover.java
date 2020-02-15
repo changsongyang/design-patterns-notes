@@ -10,16 +10,12 @@ package com.github.design.esponsibilitychain;
 
 
 public  abstract  class AbstractApprover {
-
     AbstractApprover approver;   //下一个处理者
-
     String name; // 名字
-
 
     public  AbstractApprover(String name){
         this.name=name;
     }
-
 
 
     /**

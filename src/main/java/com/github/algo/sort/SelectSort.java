@@ -1,4 +1,4 @@
-package com.github.algo;
+package com.github.algo.sort;
 import java.util.Arrays;
 
 

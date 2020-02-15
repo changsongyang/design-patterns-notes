@@ -24,10 +24,11 @@ public class SemaphoreTest {
                 s.acquire();  //获取一个许可
                 System.out.println(Thread.currentThread().getName()+" 获取一个许可开始执行...");
                 Thread.sleep(1000);
-                System.out.println(Thread.currentThread().getName()+" 退出。");
+
             }catch (Exception e){
             }finally {
                 s.release();  //规划一个许可
+                System.out.println(Thread.currentThread().getName()+" 退出。");
             }
         }
     }

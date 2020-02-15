@@ -1,5 +1,7 @@
-package com.github.algo;
+package com.github.algo.tree;
 
+
+import com.github.algo.TreeNode;
 
 /**
  * 功能描述: 二叉树的 前序遍历 中序遍历 后续遍历

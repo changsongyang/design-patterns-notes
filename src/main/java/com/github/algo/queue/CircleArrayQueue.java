@@ -1,8 +1,8 @@
-package com.github.algo;
+package com.github.algo.queue;
 
 
 /**
- * 功能描述: 素组实现环形队里
+ * 功能描述: 实现环形队里
  * @author: qinxuewu
  * @date: 2019/10/22 11:22
  * @since 1.0.0

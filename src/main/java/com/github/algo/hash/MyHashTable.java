@@ -1,4 +1,4 @@
-package com.github.algo;
+package com.github.algo.hash;
 
 /**
  *  简单的HashTable的实现

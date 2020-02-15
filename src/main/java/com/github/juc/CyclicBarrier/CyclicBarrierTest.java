@@ -4,6 +4,7 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierTest {
     private static CyclicBarrier c;
+
     //批量处里表格数据任务
     static class task  extends Thread{
 

@@ -1,4 +1,4 @@
-package com.github.algo;
+package com.github.algo.queue;
 
 /**
  * 功能描述: 基于数组实现的队列- 目前没有达到服用的效果
