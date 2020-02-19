@@ -10,7 +10,7 @@ import com.github.algo.TreeNode;
  * @date: 2019/11/19 11:05
  * @since 1.0.0
  */
-public class BinaryTree {
+public class BinaryTreeTest {
 
 
     public static void main(String[] args) {
