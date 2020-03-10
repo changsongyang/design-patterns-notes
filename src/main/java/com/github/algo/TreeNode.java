@@ -13,9 +13,11 @@ public class TreeNode {
     private String name;
     private TreeNode left;
     private TreeNode right;
-    public TreeNode(int id,String name){
+    private TreeNode parent;
+    public TreeNode(int id,String name,TreeNode parent){
         this.id=id;
         this.name=name;
+        this.parent=parent;
     }
 
     public int getId() {
@@ -48,6 +50,10 @@ public class TreeNode {
 
     public void setRight(TreeNode right) {
         this.right = right;
+    }
+
+    public TreeNode getParent() {
+        return parent;
     }
 
     @Override
