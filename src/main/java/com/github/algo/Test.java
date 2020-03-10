@@ -47,9 +47,9 @@ public class Test {
 
 
     public static void main(String[] args) {
-        Times.test("fip", ()-> System.out.println(fip(35)) );
+        Times.test("fip", ()-> System.out.println(fip(45)) );
 
 
-        Times.test("fip2",()-> System.out.println(fip2(35)) );
+        Times.test("fip2",()-> System.out.println(fip2(45)) );
     }
 }

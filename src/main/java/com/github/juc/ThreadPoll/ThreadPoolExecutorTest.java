@@ -74,7 +74,7 @@ public class ThreadPoolExecutorTest {
          */
         ExecutorService executorService = new ThreadPoolExecutor(5, 5, 0L,
                 TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(10),
-                Executors.defaultThreadFactory(), new RejectedExecutionHandler() {
+                new NamedThreadFactory("ddddddddd"), new RejectedExecutionHandler() {
             @Override
             public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
                 //打印丢弃的任务
@@ -82,19 +82,22 @@ public class ThreadPoolExecutorTest {
             }
         });
         for (int i = 0; i <100 ; i++) {
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println(Thread.currentThread().getName());
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+            CompletableFuture.runAsync(()->{
+                System.out.println(Thread.currentThread().getName());
+            },executorService);
+//            executorService.execute(new Runnable() {
+//                @Override
+//                public void run() {
+//                    System.out.println(Thread.currentThread().getName());
+//                    try {
+//                        Thread.sleep(10);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
         }
-        executorService.shutdown();
+//        executorService.shutdown();
 
     }
 }
