@@ -120,14 +120,32 @@ public class BinarySearchTree<E>   implements BinaryTreeInfo {
      * 递归实现  中序遍历  中序遍历出的数据有有序的  升序 或降序
      * 规则 ：  左节点-》 根节点--》右节点
      */
-    public  void  inorderTraversal(){
-        inorderTraversal(root);
+//    public  void  inorderTraversal(){
+//        inorderTraversal(root);
+//    }
+//    private   void  inorderTraversal(Node<E> node){
+//        if(node==null){ return;}
+//        inorderTraversal(node.left);
+//        System.out.println(node.element);
+//        inorderTraversal(node.right);
+//    }
+
+    public  void  inOrder(Visitor<E> visitor){
+            inOrder(visitor,root);
     }
-    private   void  inorderTraversal(Node<E> node){
-        if(node==null){ return;}
-        inorderTraversal(node.left);
-        System.out.println(node.element);
-        inorderTraversal(node.right);
+
+    private  void  inOrder(Visitor<E> visitor,Node<E> node){
+        if(node==null || visitor.stop){
+            return;
+        }
+        inOrder(visitor,node.left);
+
+        if(visitor.stop){
+            return;
+        }
+        visitor.stop= visitor.visit(node.element);
+        inOrder(visitor,node.right);
+
     }
 
 
@@ -173,6 +191,68 @@ public class BinarySearchTree<E>   implements BinaryTreeInfo {
     }
 
 
+    /**
+     * 层序遍历   自定义元素处理方式  通过传入一个接口行为
+     * @param visitor
+     */
+    public void levelOrder(Visitor<E> visitor){
+        if(root==null){ return;}
+        // 将根节点入队
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            // 出队
+            Node<E> node=queue.poll();
+
+            // 元素处理方式 传入一个接口行为
+            if(visitor.visit(node.element)){ return; }
+
+
+            if(node.left!=null){
+                queue.add(node.left);
+            }
+            if(node.right!=null){
+                queue.add(node.right);
+            }
+        }
+
+    }
+
+
+    /**
+     * 层序遍历 求树的高度
+     * @return
+     */
+    public  int  height(){
+        if(root==null){ return 0;}
+
+        Queue<Node<E>> queue=new LinkedList<>();
+        queue.offer(root);
+
+        // 树的高度
+        int height = 0;
+        // 存储着每一层的元素数量
+        int levelSize = 1;
+        while (!queue.isEmpty()){
+
+            Node<E> node=queue.poll();
+            levelSize--;
+
+            if(node.left!=null){
+                queue.add(node.left);
+            }
+            if(node.right!=null){
+                queue.add(node.right);
+            }
+
+            if(levelSize==0){
+                levelSize = queue.size();
+                height++;
+            }
+        }
+
+        return  height;
+    }
 
     /**
      * 删除元素
@@ -226,4 +306,15 @@ public class BinarySearchTree<E>   implements BinaryTreeInfo {
 
         return myNode.element;
     }
+
+    //  遍历方式接口
+    public static abstract class Visitor<E> {
+        boolean stop;
+        /**
+         * @return 如果返回true，就代表停止遍历
+         */
+        public abstract boolean visit(E element);
+    }
+
+
 }

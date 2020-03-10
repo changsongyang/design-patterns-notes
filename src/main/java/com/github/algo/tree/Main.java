@@ -18,22 +18,50 @@ public class Main {
                 7, 4, 9, 2, 5, 8, 11, 3, 12, 1
         };
 
-        BinarySearchTree<Person> bst1 = new BinarySearchTree<>();
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         for (int i = 0; i < data.length; i++) {
-            bst1.add(new Person(data[i]));
+            bst.add(data[i]);
         }
-        BinaryTrees.println(bst1);
+        BinaryTrees.println(bst);
+
+        bst.levelOrder(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                System.out.print(element + " ");
+                return element == 9 ? true : false;
+            }
+        });
+
+        System.out.println("--------");
+        bst.inOrder(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                System.out.print(element + " ");
+                return element == 4 ? true : false;
+            }
+
+        });
+
+//        BinarySearchTree<Person> bst1 = new BinarySearchTree<>();
+//        for (int i = 0; i < data.length; i++) {
+//            bst1.add(new Person(data[i]));
+//        }
+//        BinaryTrees.println(bst1);
+
+
+
 
 
          System.out.println("----------------------------");
 
         // 前序遍历
-        bst1.preorderTraversal();
+//        bst1.preorderTraversal();
 //        // 中序遍历
 //        bst1.inorderTraversal();
 //        // 后序遍历
 //        bst1.postorderTraversal();
 //        // 层序遍历
 //        bst1.levelOrderTraversal();
+
     }
 }
