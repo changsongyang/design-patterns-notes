@@ -12,5 +12,5 @@ public  abstract class MsgStrategy {
      * 发送小程序订阅消息的策略方法
      * @param jsonStr
      */
-     abstract  boolean sendMsg(String jsonStr);
+     public abstract  boolean sendMsg(String jsonStr);
 }
