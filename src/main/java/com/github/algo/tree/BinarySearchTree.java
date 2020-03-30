@@ -225,19 +225,15 @@ public class BinarySearchTree<E>   implements BinaryTreeInfo {
      */
     public  int  height(){
         if(root==null){ return 0;}
-
         Queue<Node<E>> queue=new LinkedList<>();
         queue.offer(root);
-
         // 树的高度
         int height = 0;
         // 存储着每一层的元素数量
         int levelSize = 1;
         while (!queue.isEmpty()){
-
             Node<E> node=queue.poll();
             levelSize--;
-
             if(node.left!=null){
                 queue.add(node.left);
             }
@@ -250,7 +246,6 @@ public class BinarySearchTree<E>   implements BinaryTreeInfo {
                 height++;
             }
         }
-
         return  height;
     }
 
