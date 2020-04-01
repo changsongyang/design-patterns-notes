@@ -2,9 +2,7 @@ package com.github.algo.tree;
 
 import com.github.algo.tree.printer.BinaryTreeInfo;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 二叉搜索树
@@ -173,6 +171,7 @@ public class BinarySearchTree<E>   implements BinaryTreeInfo {
     public void levelOrderTraversal(){
         if(root==null){ return;}
         // 将根节点入队
+
         Queue<Node<E>> queue = new LinkedList<>();
 		queue.offer(root);
 		while (!queue.isEmpty()){
