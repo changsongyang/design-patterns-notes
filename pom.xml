@@ -79,6 +79,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
+        <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>2.2.2</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
