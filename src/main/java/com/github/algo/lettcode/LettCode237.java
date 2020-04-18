@@ -27,5 +27,6 @@ public class LettCode237 {
         // 所以做法就是直接把当前节的下一个结点赋值给当前节点，这样然后改变当前的节点的指向 其实就达到删除的目的
         node.val=node.next.val;
         node.next=node.next.next;
+
     }
 }
