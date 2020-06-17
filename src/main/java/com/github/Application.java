@@ -1,7 +1,4 @@
-package com.github;
-import com.github.design.strategy.spring.MsgTypeEnum;
-import com.github.design.strategy.spring.StrategyContext;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.github;;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
